@@ -11,7 +11,7 @@ import retrofit2.http.Query
 
 interface GoogleBooksRetrofitService {
     @GET("books/v1/volumes")
-    suspend fun getBookByIsbn(@Query("q", encoded = true)isbn: String) : Response<GoogleBooksApiResponse>
+    suspend fun getBookByQuery(@Query("q", encoded = true)queryString: String) : Response<GoogleBooksApiResponse>
 
     companion object {
         var retrofitService: GoogleBooksRetrofitService? = null
