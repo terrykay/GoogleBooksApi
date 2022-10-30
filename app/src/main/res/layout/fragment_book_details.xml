@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colourBackground"
     tools:context=".BookDetailsFragment">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -14,6 +15,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="12dp"
+        android:paddingStart="@dimen/base_unit_space"
+        android:paddingEnd="@dimen/base_unit_space"
+        android:paddingTop="@dimen/base_unit_space"
         android:hint="Title">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -32,6 +36,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="12dp"
+        android:paddingStart="@dimen/base_unit_space"
+        android:paddingEnd="@dimen/base_unit_space"
+        android:paddingTop="@dimen/base_unit_space"
         android:hint="Authors">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -48,7 +55,9 @@
         app:layout_constraintTop_toBottomOf="@+id/authorsWrapper"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="12dp"
+        android:paddingStart="@dimen/base_unit_space"
+        android:paddingEnd="@dimen/base_unit_space"
+        android:paddingTop="@dimen/base_unit_space"
         android:hint="@string/publisher">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -65,7 +74,9 @@
         app:layout_constraintTop_toBottomOf="@+id/publisherWrapper"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="12dp"
+        android:paddingStart="@dimen/base_unit_space"
+        android:paddingEnd="@dimen/base_unit_space"
+        android:paddingTop="@dimen/base_unit_space"
         android:hint="@string/isbn">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -83,6 +94,9 @@
         app:layout_constraintTop_toBottomOf="@+id/isbnWrapper"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:paddingStart="@dimen/base_unit_space"
+        android:paddingEnd="@dimen/base_unit_space"
+        android:paddingTop="@dimen/base_unit_space"
         android:text="Binding" />
 
     <RadioGroup
@@ -93,6 +107,8 @@
         app:layout_constraintTop_toBottomOf="@+id/radioGroupLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:paddingStart="@dimen/base_unit_space"
+        android:paddingEnd="@dimen/base_unit_space"
         android:text="Binding">
 
         <RadioButton
@@ -118,5 +134,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bindingRadioGroup" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/bookDetailsActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@drawable/ic_barcode_scan" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

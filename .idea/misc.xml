@@ -4,7 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.11270983213429256" />
+        <entry key="app/src/main/res/drawable/ic_barcode_scan.xml" value="0.214" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.16354166666666667" />
         <entry key="app/src/main/res/layout/book_card_view_layout.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/content_main.xml" value="0.16354166666666667" />
         <entry key="app/src/main/res/layout/fragment_book_details.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.16354166666666667" />
         <entry key="app/src/main/res/xml/network.xml" value="0.1625" />

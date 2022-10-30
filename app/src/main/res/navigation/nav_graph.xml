@@ -14,7 +14,12 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+
+        <action
+            android:id="@+id/action_FirstFragment_to_BookDetailsFragment"
+            app:destination="@id/BookDetailsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/SecondFragment"
         android:name="uk.meadowsoftware.googlebooksapi.SecondFragment"
@@ -23,6 +28,17 @@
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/BookDetailsFragment"
+        android:name="uk.meadowsoftware.googlebooksapi.bookdetails.BookDetailsFragment"
+        android:label="@string/book_details_fragment_title"
+        tools:layout="@layout/fragment_second">
+
+        <action
+            android:id="@+id/action_BookDetailsFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
 </navigation>

@@ -16,4 +16,6 @@
     <string name="publisher">Publisher</string>
     <string name="isbn">ISBN</string>
     <string name="search">Search</string>
+
+    <string name="book_details_fragment_title">Book details</string>
 </resources>
