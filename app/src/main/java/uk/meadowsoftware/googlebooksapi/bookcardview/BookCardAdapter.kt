@@ -5,20 +5,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.Target.SIZE_ORIGINAL
 import uk.meadowsoftware.googlebooksapi.R
-import uk.meadowsoftware.googlebooksapi.databinding.BookCardViewLayoutBinding
-import uk.meadowsoftware.googlebooksapi.repository.localmodel.BookModel
+import uk.meadowsoftware.googlebooksapi.repository.localmodel.Book
 
 class BookCardAdapter: RecyclerView.Adapter<BookCardAdapter.BookCardViewholder>() {
 
-    private var bookList: MutableList<BookModel> = mutableListOf()
+    private var bookList: MutableList<Book> = mutableListOf()
 
-    fun setBookList(list : List <BookModel>) {
+    fun setBookList(list : List <Book>) {
         bookList.clear()
         bookList.addAll(list)
         notifyDataSetChanged()
@@ -39,6 +36,8 @@ class BookCardAdapter: RecyclerView.Adapter<BookCardAdapter.BookCardViewholder>(
             bookList[position].let { book ->
                 holder.title.text = book.title
                 holder.authors.text = book.authors.joinToString(separator = ", ")
+                holder.notes.visibility = View.GONE
+                holder.binding.visibility = View.GONE
                 Glide.with(holder.imageView)
                     .load(book.thumbnailUrl)
                     .override(SIZE_ORIGINAL)

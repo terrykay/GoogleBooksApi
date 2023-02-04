@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             val got = r.getBookByIsbn("9780008288198")
 
-            Log.d("MainActivity", "resp - ${got.body()}")
+            Log.d("MainActivity", "resp - ${got}")
         }
     }
 

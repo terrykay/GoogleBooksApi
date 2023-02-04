@@ -15,10 +15,9 @@ import kotlinx.coroutines.launch
 import uk.meadowsoftware.googlebooksapi.constants.HARDBACK
 import uk.meadowsoftware.googlebooksapi.constants.SOFTBACK
 import uk.meadowsoftware.googlebooksapi.databinding.FragmentBookDetailsBinding
-import uk.meadowsoftware.googlebooksapi.databinding.FragmentFirstBinding
 import uk.meadowsoftware.googlebooksapi.repository.GoogleBooksRepository
 import uk.meadowsoftware.googlebooksapi.repository.GoogleBooksRetrofitService
-import uk.meadowsoftware.googlebooksapi.repository.localmodel.BookModel
+import uk.meadowsoftware.googlebooksapi.repository.localmodel.Book
 
 class BookDetailsFragment : Fragment() {
     private var _binding: FragmentBookDetailsBinding? = null
@@ -29,7 +28,7 @@ class BookDetailsFragment : Fragment() {
 
     }
 
-    private var bookModel: BookModel? = null
+    private var bookModel: Book? = null
 
     // Temporary
     val r  = GoogleBooksRepository(GoogleBooksRetrofitService.getInstance())
@@ -50,15 +49,15 @@ class BookDetailsFragment : Fragment() {
             lifecycleScope.launch {
                 val got = r.getBookByIsbn(binding.isbnEditText.text.toString())
 
-                binding.titleEditText.setText(got.body()?.items?.get(0)?.volumeInfo?.title)
-                binding.publisherEditText.setText(got.body()?.items?.get(0)?.volumeInfo?.publisher)
-                Log.d("MainActivity", "resp - ${got.body()}")
+                binding.titleEditText.setText(got.first().title)
+                binding.publisherEditText.setText(got.first().publisher)
+                Log.d("MainActivity", "resp - ${got}")
             }
         }
         return binding.root
     }
 
-    fun setBook(bookModel: BookModel) {
+    fun setBook(bookModel: Book) {
         binding.titleEditText.setText(bookModel.title)
         binding.authorsEditText.setText(bookModel.authors.joinToString(separator = ", "))
         binding.publisherEditText.setText(bookModel.publisher)
@@ -73,9 +72,9 @@ class BookDetailsFragment : Fragment() {
         }
     }
 
-    fun getBook(): BookModel {
+    fun getBook(): Book {
         if (bookModel == null)
-            bookModel = BookModel()
+            bookModel = Book()
         bookModel!!.copy(
             title = binding.titleEditText.text.toString(),
             authors = binding.authorsEditText.text.toString().split(", "),
@@ -119,7 +118,7 @@ class BookDetailsFragment : Fragment() {
 
 
     companion object {
-        fun newInstance(bookModel: BookModel? = null): BookDetailsFragment {
+        fun newInstance(bookModel: Book? = null): BookDetailsFragment {
             val args = Bundle()
             bookModel?.let {
                 args.putParcelable(BOOK_PARAM, bookModel)

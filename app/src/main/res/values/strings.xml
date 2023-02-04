@@ -18,4 +18,7 @@
     <string name="search">Search</string>
 
     <string name="book_details_fragment_title">Book details</string>
+
+    <string name="owned">Owned</string>
+    <string name="binding">Binding</string>
 </resources>

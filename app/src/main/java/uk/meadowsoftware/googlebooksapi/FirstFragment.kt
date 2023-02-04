@@ -10,18 +10,17 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import uk.meadowsoftware.googlebooksapi.bookcardview.BookCardAdapter
 import uk.meadowsoftware.googlebooksapi.databinding.FragmentFirstBinding
 import uk.meadowsoftware.googlebooksapi.repository.GoogleBooksRepository
-import uk.meadowsoftware.googlebooksapi.repository.GoogleBooksRetrofitService
-import uk.meadowsoftware.googlebooksapi.repository.localmodel.BookModel
+import uk.meadowsoftware.googlebooksapi.repository.localmodel.Book
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
+
+    private val r  : GoogleBooksRepository  by inject() //(GoogleBooksRetrofitService.getInstance())
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -44,19 +43,13 @@ class FirstFragment : Fragment() {
             findNavController().navigate(R.id.action_FirstFragment_to_BookDetailsFragment)
         }
 
-        val r  = GoogleBooksRepository(GoogleBooksRetrofitService.getInstance())
+       // val r  = GoogleBooksRepository(GoogleBooksRetrofitService.getInstance())
         lifecycleScope.launch {
-            val got = r.getBooksByAuthor("Terry+Pratchett")
-
-            Log.d("FirstFragment", "resp - ${got.body()}")
-            val bookList = mutableListOf<BookModel>()
-            got.body()?.items?.forEach {
-                bookList.add(BookModel(it.volumeInfo!!))
-            }
+            val listByAuthor = r.getBooksByAuthor("Terry+Pratchett")
 
             binding.recyclerView.run {
                 adapter = BookCardAdapter().apply {
-                    setBookList(bookList)
+                    setBookList(listByAuthor)
                 }
                 layoutManager = LinearLayoutManager(requireContext())
             }

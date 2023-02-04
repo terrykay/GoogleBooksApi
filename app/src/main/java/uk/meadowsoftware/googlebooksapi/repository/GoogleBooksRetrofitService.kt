@@ -11,7 +11,10 @@ import retrofit2.http.Query
 
 interface GoogleBooksRetrofitService {
     @GET("books/v1/volumes")
-    suspend fun getBookByQuery(@Query("q", encoded = true)queryString: String) : Response<GoogleBooksApiResponse>
+    suspend fun getBookByQuery(@Query("q", encoded = true)queryString: String,
+                               @Query("maxResults")maxResults: Int = 10,
+                               @Query("startIndex")startIndex: Int = 0
+    ) : Response<GoogleBooksApiResponse>
 
     companion object {
         var retrofitService: GoogleBooksRetrofitService? = null

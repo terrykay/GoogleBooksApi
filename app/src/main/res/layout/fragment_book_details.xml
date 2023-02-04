@@ -11,14 +11,14 @@
         android:id="@+id/titleWrapper"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="12dp"
+        android:hint="Title"
         android:paddingStart="@dimen/base_unit_space"
-        android:paddingEnd="@dimen/base_unit_space"
         android:paddingTop="@dimen/base_unit_space"
-        android:hint="Title">
+        android:paddingEnd="@dimen/base_unit_space"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/titleEditText"
@@ -32,14 +32,14 @@
         android:id="@+id/authorsWrapper"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/titleWrapper"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="12dp"
+        android:hint="Authors"
         android:paddingStart="@dimen/base_unit_space"
-        android:paddingEnd="@dimen/base_unit_space"
         android:paddingTop="@dimen/base_unit_space"
-        android:hint="Authors">
+        android:paddingEnd="@dimen/base_unit_space"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleWrapper">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/authorsEditText"
@@ -52,13 +52,13 @@
         android:id="@+id/publisherWrapper"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/authorsWrapper"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="@string/publisher"
         android:paddingStart="@dimen/base_unit_space"
-        android:paddingEnd="@dimen/base_unit_space"
         android:paddingTop="@dimen/base_unit_space"
-        android:hint="@string/publisher">
+        android:paddingEnd="@dimen/base_unit_space"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/authorsWrapper">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/publisherEditText"
@@ -71,13 +71,13 @@
         android:id="@+id/isbnWrapper"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/publisherWrapper"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="@string/isbn"
         android:paddingStart="@dimen/base_unit_space"
-        android:paddingEnd="@dimen/base_unit_space"
         android:paddingTop="@dimen/base_unit_space"
-        android:hint="@string/isbn">
+        android:paddingEnd="@dimen/base_unit_space"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/publisherWrapper">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/isbnEditText"
@@ -87,29 +87,29 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
+        android:id="@+id/radioGroupLabel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/radioGroupLabel"
         android:labelFor="@+id/bindingRadioGroup"
-        app:layout_constraintTop_toBottomOf="@+id/isbnWrapper"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:paddingStart="@dimen/base_unit_space"
-        android:paddingEnd="@dimen/base_unit_space"
         android:paddingTop="@dimen/base_unit_space"
-        android:text="Binding" />
+        android:paddingEnd="@dimen/base_unit_space"
+        android:text="@string/binding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/isbnWrapper" />
 
     <RadioGroup
         android:id="@+id/bindingRadioGroup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroupLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:paddingStart="@dimen/base_unit_space"
         android:paddingEnd="@dimen/base_unit_space"
-        android:text="Binding">
+        android:text="Binding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupLabel">
 
         <RadioButton
             android:id="@+id/hardbackRadioButton"
@@ -125,6 +125,25 @@
 
     </RadioGroup>
 
+    <CheckBox
+        android:id="@+id/ownedCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/base_unit_space"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bindingRadioGroup" />
+
+    <TextView
+        android:id="@+id/ownedLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/ownedCheckBox"
+        android:text="@string/owned"
+        app:layout_constraintBottom_toBottomOf="@id/ownedCheckBox"
+        app:layout_constraintStart_toEndOf="@id/ownedCheckBox"
+        app:layout_constraintTop_toTopOf="@id/ownedCheckBox" />
+
+
     <Button
         android:id="@+id/buttonSearch"
         android:layout_width="wrap_content"
@@ -139,9 +158,10 @@
         android:id="@+id/bookDetailsActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="@dimen/fab_margin"
+        app:tint="@color/white"
         app:srcCompat="@drawable/ic_barcode_scan" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
